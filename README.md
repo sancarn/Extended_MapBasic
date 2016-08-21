@@ -20,6 +20,7 @@ This is an Open Source project. We are developing a powerful extension for the M
 
 ## Planned features:
 * Settings menu to manage features.
+* Auto-Declare - Why was declaration requirement even added?
 * Enter_Behaviour - Run selected line/selection or Run entire script
 * MapBasic Project and Modular programming support (with auto .mbp generation).
 * Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
