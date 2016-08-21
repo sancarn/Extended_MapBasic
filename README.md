@@ -3,11 +3,16 @@ This is an Open Source project. We are developing a powerful extension for the M
 
 # Current Functionality:
 1. Run scripts from MapBasic Window as usual. There are currently 2 different compile methods which have been implemented:
+    
     i) Compile if Prefixed with "::"
-      ::
-      For i = 1 to 10
+    
+    ```  
+    ::
+    For i = 1 to 10
         print i
-      next i
+    next i
+    ```
+    
     ii) Compile if required. Uses RegEx to establish whether compilation is required. If it requires compiling, the program will compile it and run the compiled file in the (current?) instance of MapInfo.
 
 
