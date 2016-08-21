@@ -13,7 +13,7 @@ This is an Open Source project. We are developing a powerful extension for the M
     next i
     ```
     
-    ii) Compile if required. Uses RegEx to establish whether compilation is required. If it requires compiling, the program will compile it and run the compiled file in the (current?) instance of MapInfo.
+    ii) Compile if required. Searches for keywords like `Sub` and `For ... next`. If found the program will compile it and run the compiled file in the (current?) instance of MapInfo.
 
 
 
