@@ -19,15 +19,15 @@ This is an Open Source project. We are developing a powerful extension for the M
 
 
 ## Planned features:
-* Settings menu to manage features.
-* Auto-Declare - No longer any need to declare subs and functions!
-* Enter_Behaviour - Run selected line/selection or Run entire script
-* MapBasic Project and Modular programming support (with auto .mbp generation).
-* Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
-* External MapBasic Window?
-* Ability to use multiple compilation methods at once?
+* [ ] Settings menu to manage features.
+* [ ] Auto-Declare - No longer any need to declare subs and functions!
+* [ ] Enter_Behaviour - Run selected line/selection or Run entire script
+* [ ] MapBasic Project and Modular programming support (with auto .mbp generation).
+* [ ] Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
+* [ ] External MapBasic Window?
+* [ ] Ability to use multiple compilation methods at once?
 
 
 ## Potential Features:
-* getTablePath() - Displays a dialog which the user can use to select a table or open a new table. The function returns the table path.
-* Other built in custom functions and sub-routines to extend the MapBasic language. (It may be desired for these libraries to be external to the standard script)
+* [ ] getTablePath() - Displays a dialog which the user can use to select a table or open a new table. The function returns the table path.
+* [ ] Other built in custom functions and sub-routines to extend the MapBasic language. (It may be desired for these libraries to be external to the standard script)
