@@ -29,4 +29,4 @@ This is an Open Source project. We are developing a powerful extension for the M
 
 ## Potential Features:
 * getTablePath() - Displays a dialog which the user can use to select a table or open a new table. The function returns the table path.
-* Other built in custom functions and sub-routines to extend the MapBasic language.
+* Other built in custom functions and sub-routines to extend the MapBasic language. (It may be desired for these libraries to be external to the standard script)
