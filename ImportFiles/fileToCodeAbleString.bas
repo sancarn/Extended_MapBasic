@@ -1,4 +1,4 @@
-Attribute VB_Name = "saveImageAsString_final"
+Attribute VB_Name = "fileToCodeAbleString"
 Dim TSF As String
 
 Sub init()
