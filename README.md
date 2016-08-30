@@ -28,7 +28,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] MapBasic Project and Modular programming support (with auto .mbp generation).
 * [ ] Optional parameters for functions and sub-routines
 * [ ] Arrays as parameters for functions
-* [ ]   ByVal Arrays for functions and sub-routines.
+* [ ]   -- ByVal Arrays for functions and sub-routines.
 
 ## Planned MBWindow support:
 * [ ] Enter_Behaviour - Run selected line/selection or Run entire script
