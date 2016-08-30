@@ -6,7 +6,7 @@ This is an Open Source project. We are developing a powerful extension for Pitne
 
 Feel free to post ideas for features as issues. If you want to make additions to the source, feel free to send me a message and I'll set up the permissions. 
 
-## Current Functionality - MapBasic Window Compilation:
+## Current Functionality - A MapBasic Window Compilation:
 1. Run scripts from MapBasic Window as usual. There are currently 2 different compile methods which have been implemented:
     
     i) Compile if Prefixed with "::"
