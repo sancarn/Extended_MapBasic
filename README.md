@@ -29,6 +29,10 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] Optional parameters for functions and sub-routines
 * [ ] Arrays as parameters for functions
 * [ ]   -- ByVal Arrays for functions and sub-routines.
+* [ ] PreTranspile: { ... } AHK Code blocks -Perform AHK Script before transpiling mapbasic document.
+* [ ] PreCompile: { ... } AHK Code blocks   -Perform AHK script before compiling mapbasic document.
+* [ ] PostCompile: { ... } AHK Code blocks  -Perform AHK script after compiling mapbasic document.
+* [ ] ".EMB" file format
 
 ## Planned MBWindow support:
 * [ ] Enter_Behaviour - Run selected line/selection or Run entire script
