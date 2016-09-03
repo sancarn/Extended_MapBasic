@@ -13,15 +13,15 @@ Sub test_stringToFile()
     Call init
     
     'EXAMPLE - Write string saved in module to file.
-    stringToFile TSF, "C:\Users\jwa\Desktop\sStr.bmp"
+    stringToFile TSF, "C:\Users\<username>\Desktop\sStr.bmp"
 End Sub
 
 Sub test_fileToString()
     Call init
     
     'EXAMPLE - Read written file into string. Print whether the strings are equal.
-    Debug.Print getProgrammableFileString(64, fileToString("C:\Users\jwa\Desktop\sStr.bmp"), "s")
-    Debug.Print fileToString("C:\Users\jwa\Desktop\sStr.bmp") = TSF
+    Debug.Print getProgrammableFileString(64, fileToString("C:\Users\<username>\Desktop\sStr.bmp"), "s")
+    Debug.Print fileToString("C:\Users\<username>\Desktop\sStr.bmp") = TSF
 End Sub
 
 
