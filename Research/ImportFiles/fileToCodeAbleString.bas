@@ -209,9 +209,6 @@ Function ReadBinaryFile(sFileName As String) As Integer()
     'Dim sFilename As String
     Dim x As Integer
     
-    
-    'sFilename = "U:\Macros\3_AHK\Smart MapBasic Compiler\asdf.bmp"
-    
     ' Get an available file number from the system
      nFileNum = FreeFile
     
