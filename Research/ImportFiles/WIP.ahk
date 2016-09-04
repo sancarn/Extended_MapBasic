@@ -106,12 +106,15 @@ sFileVars := []
 
 
 ;Main Regex: Include\s+"(.*)"\s*,\s*(\w+)\s+as\s+string
-pattern := "iO)" . "Include\s+"((?!.*Include).*?)"\s*,\s*(\w+)\s+as\s+string"
+pattern := "iO)" . "Include\s+"((?!.*Include).*?)"\s*,\s*((?!as\b)\w+)\s+as\s+string"
 
 ;What does the regex mean?
 ;~~~~~~~~~~~~~~~~~~~~~~~~~
 ;The desired match should consist of 'Include "<some characters>" , <some variable name> as string'
 ;The following is an illegal match 'Include "<some characters> Include" , <some variable name> as string'
+;The following is an illegal match 'Include "<some characters>" as as string'
+;But this is a legal match 	   'Include "<some characters>" asd as string'
+;As well as			   'Include "<some characters>" bas as string'
 ;Prefix Option "i" makes the regex case insensitive.
 ;Prefix Option "O" makes the regex return an object.
 ;The following match is legal: 'Include "someImage.png", someImage as string' in 'Include "someScript.mb"Include "someImage.png", someImage as string'
@@ -134,15 +137,18 @@ If match <> "" {
       
       ;Find the next match
       match = RegExMatch(MB, pattern, mObj, match)
-   }
+   }  ;All 'Include "someFile", asdf as string' have been removed from MB. MB therefore contains the 'most complete' script so far
   
-  ;All 'Include "someFile", asdf as string' have been removed from MB. MB therefore contains the 'most complete' script so far
-  ;Next steps, generate
   ; filepath variable declarations
+  sJoin := ImportFiles_StrJoin(sFileVars,",")
+  header = %header%`r`nDim %sJoin% as string
+  
+  ;Next steps, generate
   ; filedata variable declarations
   ; getFileData
   ; concatenate with MB
 }
+
 
 
 
@@ -168,4 +174,25 @@ ImportFiles_MidInvert(sSrc, iStart, iLen){
   
   ;Return concatenation of the left and right parts.
   return leftPart . rightPart
+}
+
+;Code by Pulover - https://github.com/Pulover/Eval/blob/master/Eval.ahk
+ImportFiles_StrJoin(InputArray, JChr := "", Quote := false, Init := true)
+{
+	For i, v in InputArray
+	{
+		If (IsObject(v))
+			return v
+		If v is not Number
+		{
+			If (!Init)
+				v := RegExReplace(v, """{1,2}", """""")
+			If (Quote)
+				v := """" v """"
+		}
+		JoinedStr .= v . JChr
+	}
+	If (JChr != "")
+		JoinedStr := SubStr(JoinedStr, 1, -(StrLen(JChr)))
+	return JoinedStr
 }
