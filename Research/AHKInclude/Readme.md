@@ -1,4 +1,4 @@
-# AHK - Import Files
+# AHK - Include AHK Scripts
 
 This folder will contain a series of tests to show and, well test..., the functionality of AHKs #Include statment.
 
