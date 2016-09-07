@@ -122,10 +122,14 @@ C.AHK {
 }
 ```
 
-Results: 
-  Msgbox, Loading B
-  Msgbox, Loading C
-  Msgbox, The modules B and C have been loaded loaded
+#Results: 
+
+Msgbox, Loading B
+
+Msgbox, Loading C
+
+Msgbox, The modules B and C have been loaded loaded
+
 ~~~END~~~
 
 #Test 5
@@ -153,8 +157,10 @@ C.AHK {
 }
 ```
 
-Results:
-  Msgbox, Loading B
+#Results:
+
+Msgbox, Loading B
+
 ~~~END~~~
 
 ## Why?
