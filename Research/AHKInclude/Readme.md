@@ -98,3 +98,65 @@ When running A.AHK > {
 }
 
 This shows that variables declared in one child AHK file are continued through to the parent AHK file. I.E. All variables are global.
+
+#Test 4
+```
+A.AHK{
+	Msgbox, Loading B
+	#Include B.AHK
+	Msgbox, Loading C
+	#Include C.AHK
+	Msgbox, The modules %B% and %C% have been loaded loaded
+}
+```
+
+```
+B.AHK {
+	B := "B"
+}
+```
+
+```
+C.AHK {
+	C := "C"
+}
+```
+
+Results: 
+  Msgbox, Loading B
+  Msgbox, Loading C
+  Msgbox, The modules B and C have been loaded loaded
+~~~END~~~
+
+#Test 5
+
+```
+A.AHK{
+	#Include B.AHK
+	#Include C.AHK
+	Msgbox, The modules %B% and %C% have been loaded.
+}
+```
+
+```
+B.AHK {
+	B := "B"
+	Return
+	mysub:
+	Return
+}
+```
+
+```
+C.AHK {
+	C := "C"
+}
+```
+
+Results:
+  Msgbox, Loading B
+~~~END~~~
+
+## Why?
+
+When the script runs into B and encounters 'return' execution of header script is halted.
