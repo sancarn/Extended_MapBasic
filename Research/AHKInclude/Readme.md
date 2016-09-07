@@ -9,7 +9,7 @@ Include Syntax:
 ```
 
 
-#Test 1 - 3 Files
+#Test 1
 
 ```
 A.AHK: {
@@ -29,11 +29,11 @@ C.AHK {
 }
 ```
 
-#Result
+##Result
 
 When running A.AHK, msgbox appears with "hello you!", as expected.
 
-#Test 2 - 3 Files
+#Test 2
 
 ```
 A.AHK: {
@@ -55,7 +55,7 @@ C.AHK {
 }
 ```
 
-#Results:
+##Results:
 When running A.AHK > {
   msgbox appears with text "hello me!"
   msgbox appears with text "hello you!"
@@ -70,7 +70,7 @@ The header will then include all other scripts in the document.
 
 It might also be nice to have a "transpile.ahk" which #Include's all .EMB transpiling scripts. However this would ensure all transpile options are enabled by default, which is something we may like to avoid.
 
-#Test 3 - 3 Files
+#Test 3
 
 ```
 A.AHK: {
@@ -91,7 +91,7 @@ C.AHK {
 }
 ```
 
-#Results:
+##Results:
 
 When running A.AHK > {
   msgbox appears with text "abcdefg, now I know my ABC"
@@ -122,7 +122,7 @@ C.AHK {
 }
 ```
 
-#Results: 
+##Results: 
 
 ```
 Msgbox, Loading B
@@ -156,7 +156,7 @@ C.AHK {
 }
 ```
 
-#Results:
+##Results:
 
 ```
 Msgbox, Loading B
