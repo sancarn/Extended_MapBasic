@@ -54,7 +54,7 @@ E.G.
 
 ```
 Dim activewin as Integer
-activewin = MI.Eval('ActiveWindow')
+activewin = MI.Eval("ActiveWindow()")
 ```
 
 But how do we get the MapInfo COM object? (thanks to Peter Moller for this: https://groups.google.com/forum/#!topic/mapinfo-l/uipvypf6Ato)
@@ -63,3 +63,15 @@ But how do we get the MapInfo COM object? (thanks to Peter Moller for this: http
 Dim MapInfo as Object
 Set MapInfo = GetObject(, "MapInfo.Application.x64")
 ```
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+
+Full code for detecting if the front window is the MapBasic Window (in VBA)
+
+```
+Function MapBasicActive() as Boolean
+ Dim MapInfo as Object
+ Set MapInfo = GetObject(,"MapInfo.Application.x64")
+ MapBasicActive = MapInfo.Eval("ActiveWindow()") = 1002
+End Function
