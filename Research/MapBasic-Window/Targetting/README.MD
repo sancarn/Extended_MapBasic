@@ -71,7 +71,8 @@ Full code for detecting if the front window is the MapBasic Window (in VBA)
 
 ```
 Function MapBasicActive() as Boolean
- Dim MapInfo as Object
- Set MapInfo = GetObject(,"MapInfo.Application.x64")
- MapBasicActive = MapInfo.Eval("ActiveWindow()") = 1002
+    Dim MapInfo as Object
+    Set MapInfo = GetObject(,"MapInfo.Application.x64")
+    MapBasicActive = MapInfo.Eval("ActiveWindow()") = 1002
 End Function
+```
