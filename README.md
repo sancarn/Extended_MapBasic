@@ -38,6 +38,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] Enter_Behaviour - Run selected line/selection or Run entire script
 * [ ] Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
 * [ ] Ability to use multiple compilation methods at once?
+* [ ] Custom MapBasic Window built in HTML with ACE including custom syntax highlighting, code snippits importing, code running...
 
 ## Potential Features:
 * [ ] Importing external transpiling libraries for use in Extended MapBasic.
