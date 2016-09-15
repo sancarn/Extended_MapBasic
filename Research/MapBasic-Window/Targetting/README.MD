@@ -48,11 +48,10 @@ print ActiveWindow() = 1002
 
 Prints true if the MapBasic window is active and false if the MapBasic window is not active.
 
-Now we just need a way to detect it from outside MapInfo
+After another discussion with PBS Support, I found that you can use COM's Eval() function to evaluate the ActiveWindow MapBasic function, from other applications.
 
-After another discussion with PBS Support I found that you can use the Eval() function to evaluate the activewindow from other applications through COM.
+E.G.
 
-E.G
 ```
 Dim activewin as Integer
 activewin = MI.Eval('ActiveWindow')
