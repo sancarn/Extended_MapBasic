@@ -49,3 +49,18 @@ print ActiveWindow() = 1002
 Prints true if the MapBasic window is active and false if the MapBasic window is not active.
 
 Now we just need a way to detect it from outside MapInfo
+
+After another discussion with PBS Support I found that you can use the Eval() function to evaluate the activewindow from other applications through COM.
+
+E.G
+```
+Dim activewin as Integer
+activewin = MI.Eval('ActiveWindow')
+```
+
+But how do we get the MapInfo COM object? (thanks to Peter Moller for this: https://groups.google.com/forum/#!topic/mapinfo-l/uipvypf6Ato)
+
+```
+Dim MapInfo as Object
+Set MapInfo = GetObject(, "MapInfo.Application.x64")
+```
