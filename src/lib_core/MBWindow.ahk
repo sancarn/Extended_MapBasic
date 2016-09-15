@@ -1,10 +1,15 @@
 #IfWinActive ahk_exe MapInfoPro.exe ;THIS WILL NEED EXTENSION THROUGH "isMapBasicWindow()"
+mbWin_enterBehaviour = 1
+
 $Enter::    ;$ so Enter can be re-used
-    
     If Not isMapBasicWindow() {
         send, {Enter}
         return
     }
+    
+    If (mbWin_enterBehaviour > 1) {
+    	send, ^a{Enter}
+    )
     
     ;Get the MapBasic source from the MapBasic Window
     old_clipboard := ClipboardAll
@@ -13,8 +18,6 @@ $Enter::    ;$ so Enter can be re-used
 	clipwait,0.1
 	MBSource := clipboard
 	clipboard := old_clipboard
-	
-	
 	
 	If (needsCompiling(MBSource)) {
 	    Compile(MBSource)
