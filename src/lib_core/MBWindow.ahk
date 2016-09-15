@@ -25,7 +25,8 @@ return
 
 isMapBasicWindow(){
     ;TO DO: This should have more (fast) checks.
-    return 1
+    MapInfo = ComObjGet("MapInfo.Application.x64")
+    return MapInfo.Eval("ActiveWindow()") = 1002
 }
 
 preCompile(src){
