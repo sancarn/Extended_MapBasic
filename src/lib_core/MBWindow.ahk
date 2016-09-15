@@ -14,9 +14,9 @@ $Enter::    ;$ so Enter can be re-used
 	MBSource := clipboard
 	clipboard := old_clipboard
 	
-	MBSource := preCompile(MBSource)
 	
-	If (MBSource <> "") {
+	
+	If (needsCompiling(MBSource)) {
 	    Compile(MBSource)
 	} else {
 	    send,{Enter}
@@ -29,7 +29,7 @@ isMapBasicWindow(){
     return MapInfo.Eval("ActiveWindow()") = 1002
 }
 
-preCompile(src){
+needsCompiling(src){
 	;Separated RegEx - This may require simplifying...:
 	i := 0
 	i := i + regexmatch(src,"i)\bAlter\b\s+\b(Control|MapInfoDialog)\b")			;matches {Alter Control,Alter MapInfoDialog}
@@ -55,10 +55,5 @@ preCompile(src){
 	i := i + regexmatch(src,"i)\bSet\s+Handler\b")		    				;matches Set Handler
 	i := i + regexmatch(src,"i)\bType\b(.|\s)*?\bEnd\s+Type\b") 				;matches Type … End Type
 	i := i + regexmatch(src,"i)\bWhile\b(.|\s)*?\bWend\b")		    			;matches While … Wend
-	
-	if (i>0) {
-	    return src
-	} else {
-	    return ""
-	}
+	return i > 0
 }
