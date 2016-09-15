@@ -24,6 +24,7 @@ $Enter::    ;$ so Enter can be re-used
 	} else {
 	    send,{Enter}
 	}
+	
 return
 
 isMapBasicWindow(){
