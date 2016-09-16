@@ -35,9 +35,9 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] ".EMB" file format
 
 ## Planned MBWindow support:
-* [ ] Enter_Behaviour - Run selected line/selection or Run entire script
-* [ ] Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
-* [ ] Ability to use multiple compilation methods at once?
+* [x] Enter_Behaviour - Run selected line/selection or Run entire script
+* [x] Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
+* [x] ~Ability to use multiple compilation methods at once?~ *Now only 1 compilation method <-- RegEx
 * [ ] Custom MapBasic Window built in HTML with ACE including custom syntax highlighting, code snippits importing, code running...
 
 ## Potential Features:
