@@ -25,6 +25,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] Settings menu to manage features.
 * [ ] Block Commenting "/* ... */"
 * [ ] Auto-Declare - No longer any need to declare subs and functions!
+* [ ] Select from Query tables alongside existing tables: Select * from table1, query1 where...
 * [ ] MapBasic Project and Modular programming support (with auto .mbp generation).
 * [ ] Optional parameters for functions and sub-routines
 * [ ] Arrays as parameters for functions
