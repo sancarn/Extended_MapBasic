@@ -25,6 +25,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] Settings menu to manage features.
 * [ ] Block Commenting "/* ... */"
 * [ ] E_CurrentTable - Targetting the frontmost table, which is most useful in MBWindow.
+* [ ] E_FreeFile
 * [ ] Auto-Declare - No longer any need to declare subs and functions!
 * [ ] Select from Query tables alongside existing tables: Select * from table1, query1 where...
 * [ ] MapBasic Project and Modular programming support (with auto .mbp generation).
