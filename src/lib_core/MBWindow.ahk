@@ -8,7 +8,7 @@ $Enter::    ;$ so Enter can be re-used
     }
     
     If (mbWin_enterBehaviour > 1) {
-    	send, ^a{Enter}
+    	send, ^a
     )
     
     ;Get the MapBasic source from the MapBasic Window
