@@ -23,7 +23,7 @@ compile(MBSource, CompileDestination, MBCompilerLocation = "", runAfterCompile =
     
     ;Move file to MBX to new location
     If FileExist(A_Temp "\MapBasicWindowCompile.MBX") {     ;if successfully compiled
-        FileMove, A_Temp "\MapBasicWindowCompile.MBX"A_Temp "\MapBasicWindowCompile.MBX", CompileDestination, 1
+        FileMove, A_Temp "\MapBasicWindowCompile.MBX", CompileDestination, 1
         If runAfterCompile {                                ;if script is desired to execute after running...
             runwait, %comspec% /C "%A_Temp%\MapBasicWindowCompile.MBX",,Hide
         } else {
@@ -34,11 +34,11 @@ compile(MBSource, CompileDestination, MBCompilerLocation = "", runAfterCompile =
 		Msgbox, 4144, Extended MapBasic Compiler, %ErrorText%
 	} else {                                                        ;if compiled with unknown error...
 		Msgbox, 4112, Extended MapBasic Compiler, An unknown error occurred while trying to compile the script. Flag this as an issue @ https://github.com/sancarn/Extended_MapBasic/issues/.
-	}
+    }
     
     ;Cleanup temporary files
     FileDelete, %A_Temp%\MapBasicWindowCompile.mb
-	FileDelete, %A_Temp%\MapBasicWindowCompile.MBX
-	FileDelete, %A_Temp%\MapBasicWindowCompile.ERR
-	WinActivate, ahk_exe MapInfoPro.exe
+    FileDelete, %A_Temp%\MapBasicWindowCompile.MBX
+    FileDelete, %A_Temp%\MapBasicWindowCompile.ERR
+    WinActivate, ahk_exe MapInfoPro.exe
 }
