@@ -29,7 +29,7 @@ return
 
 isMapBasicWindow(){
     ;TO DO: This should have more (fast) checks.
-    MapInfo = ComObjGet("MapInfo.Application.x64")
+    MapInfo := ComObjGet("MapInfo.Application.x64")
     return MapInfo.Eval("ActiveWindow()") = 1002
 }
 
