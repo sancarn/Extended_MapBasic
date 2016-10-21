@@ -2,9 +2,20 @@
 
 ![Logo](/EMB_Head.png)
 
-This is an Open Source project. We are developing a powerful extension for Pitney Bowes' MapBasic Language. The extension will include, new functionality such as Auto-Declare, Block Commenting, optional parameters, array parameters for functions, Auto MBP generation as well as an inbuilt MapBasic Window extension, allowing you to compile MapBasic code directly from the MapBasic Window. Further extensions may include custom MapBasic function libraries, custom statement creation, COM object support, WinAPI Objects and generalised object oriented programming.
+This is an Open Source project. We are developing a powerful extension for Pitney Bowes' MapBasic Language. The Extended MapBasic Language can be passed through this transpiler which will turn the new code into native MapBasic code. From here it will be compiled into executable MBX files or an executable .exe file.
 
-Feel free to post ideas for features as issues. If you want to make additions to the source, feel free to send me a message and I'll set up the permissions. 
+The Extended MapBasic Language will include features such as:
+
+* Auto-Declare
+* Block Commenting
+* Optional parameters
+* Array parameters for functions
+* Auto MBP generation
+* Inbuilt Extended MapBasic Window - to allow running and compilation of Extended MapBasic Projects on the fly.
+
+For a detailed list of planned and potential future features, see the lists below.
+
+Feel free to post ideas for features as issues. If you want to make additions to the source, feel free to send me a message and I'll set up the permissions.
 
 ## Current Functionality - A MapBasic Window Compilation:
 1. Run scripts from MapBasic Window as usual. There are currently 2 different compile methods which have been implemented:
