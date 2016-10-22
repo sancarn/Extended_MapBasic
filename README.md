@@ -47,6 +47,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 * [ ] PreCompile: { ... } AHK Code blocks   -Perform AHK script before compiling mapbasic document.
 * [ ] PostCompile: { ... } AHK Code blocks  -Perform AHK script after compiling mapbasic document.
 * [ ] ".EMB" file format
+* [ ] Compile to .exe
 
 ## Planned MBWindow support:
 * [x] Enter_Behaviour - Run selected line/selection or Run entire script
