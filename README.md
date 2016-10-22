@@ -18,19 +18,9 @@ For a detailed list of planned and potential future features, see the lists belo
 Feel free to post ideas for features as issues. If you want to make additions to the source, feel free to send me a message and I'll set up the permissions.
 
 ## Current Functionality - A MapBasic Window Compilation:
-1. Run scripts from MapBasic Window as usual. There are currently 2 different compile methods which have been implemented:
-    
-    i) Compile if Prefixed with "::"
-    
-    ```  
-    ::
-    For i = 1 to 10
-        print i
-    next i
-    ```
-    
-    ii) Compile if required. Searches for keywords like `Sub` and `For ... next`. If found the program will compile it and run the compiled file in the (current?) instance of MapInfo.
+1. Run scripts from MapBasic Window as usual or where required, compile MapBasic scripts and execute them in the (current?) instance of MapInfo.
 
+This project is still very much Work In Progress (as you can see from the planned features list)
 
 ## Planned Compiler Features:
 * [ ] Settings menu to manage features.
