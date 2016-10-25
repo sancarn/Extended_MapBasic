@@ -68,3 +68,27 @@ transpiles to
 'write #1, "hello there my /*padwan*/" & mbCrLf & 
           "Obiwan wishes to speak with you"         <--- potential error?
 ```
+
+Finally:
+
+It may be useful for:
+
+```
+/*
+Hello world
+this is an
+unescaped
+comment
+```
+
+To comment everything below it like:
+
+```
+'
+'Hello world
+'this is an
+'unescaped
+'comment
+```
+
+And possibly throw a warning.
