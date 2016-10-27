@@ -11,8 +11,9 @@ EMB_Core_BlockComment(mbsource){
   
   ;Loop over all i
   while i <> 0 {
-    'If substring exists then a match was found/extracted
     If oMatch.Value(1) {
+	  ;msgbox, % oMatch.Value(0) "-->" oMatch.Value(1) "-->" oMatch.Count
+	  
       ;Add those that match 2nd criteria (real comments) to match object
       pair := [oMatch.Pos(0), oMatch.Len(0)]
       
@@ -20,12 +21,16 @@ EMB_Core_BlockComment(mbsource){
       Matches.push(pair)
     }
     
-    ;Get position to search from.
+    ;Next i
     i := oMatch.Pos(0) + oMatch.Len(0)
 	
     ;Get next match from mbsource
     i := regexmatch(mbsource, "iO)" pattern, oMatch, i)
   }
+  
+  ;Match11 := Matches[1][1]
+  ;Match12 := Matches[1][2]
+  ;msgbox, Match11:%Match11% ¦ Match12: %Match12%
   
   ;if !EMB_Compact_Transpile then
   ;  for each match in matches
@@ -41,17 +46,17 @@ EMB_Core_BlockComment(mbsource){
   ;  next match
   ;End If
   
+  ;msgbox, transpile or remove?
+  ;msgbox, % !EMB_Compact_Transpile
   if (!EMB_Compact_Transpile) {
     ;Loop over Matches
 	loop, % Matches.Length()
     {
 	  LoopVar := Matches.Length() - A_Index + 1
       subSrc := p_EMB_Core_BC_removeFromString(mbsource,Matches[LoopVar][1],Matches[LoopVar][2])
-		subSrc := RegExReplace(subSrc,"\r\n","\n")
 		subSrc := RegExReplace(subSrc,"\/\*\s*","'")
-		subSrc := StrReplace(subSrc,"\n","\n'")
-		subSrc := RegExReplace(subSrc,"\s*\*\/","\n")
-		subSrc := StrReplace(subSrc,"\n","`r`n")
+		subSrc := StrReplace(subSrc,"`r`n","`r`n'")
+		subSrc := RegExReplace(subSrc,"\s*\*\/","`r`n")
       p_EMB_Core_BC_insertIntoString(mbsource,subSrc,matches[LoopVar][1])
     }
   } else {
