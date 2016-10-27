@@ -42,4 +42,8 @@ Second line of string
 Third line of string
 ```
 
-`Var` would contain both `Carriage-Return` and `Line-Feed`
+`Var` would contain both `Carriage-Return` and `Line-Feed` like so:
+
+```
+First line of string\r\nSecond line of string\r\nThird line of string
+```
