@@ -20,13 +20,13 @@ Second line of string
 Third line of string
 ```
 
-It is important to note however that if we converted all the `carriage-return`s to `\r` and all the `line-feed`s to `\n` of the above variable we would get:
+It is important to note however that if we converted all the `carriage-return` to `\r` and all the `line-feed` to `\n` of the above variable we would get:
 
 ```
 First line of string\nSecond line of string\nThird line of string
 ```
 
-I.E. `Var` contains no `Carriage-Return`s!
+I.E. `Var` contains no `Carriage-Return`!
 
 In contrast if we use:
 
@@ -42,4 +42,4 @@ Second line of string
 Third line of string
 ```
 
-`Var` would contain both `Carriage-Return`s and `Line-Feed`s
+`Var` would contain both `Carriage-Return` and `Line-Feed`
