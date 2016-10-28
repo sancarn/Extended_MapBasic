@@ -1,6 +1,4 @@
-EMB_Core_BlockComment(mbsource){
-  pair := []
-  Matches := []
+EMB_Lib_BlockComment(mbsource){
   i := 1
   
   ;pattern ignores everything inside quotes (all defined strings)
@@ -15,14 +13,14 @@ EMB_Core_BlockComment(mbsource){
       ;Remove match from 
       If !EMB_Compact_Transpile {
 		;replace captured block comment with single line comments
-		subSrc := p_EMB_Core_BC_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
+		subSrc := p_EMB_Lib_BlockComment_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
 			subSrc := RegExReplace(subSrc,"\/\*\s*","'")
 			subSrc := StrReplace(subSrc,"`r`n","`r`n'")
 			subSrc := RegExReplace(subSrc,"\s*\*\/","`r`n")
-		p_EMB_Core_BC_insertIntoString(mbsource,subSrc,oMatch.Pos(0))
+		p_EMB_Lib_BlockComment_insertIntoString(mbsource,subSrc,oMatch.Pos(0))
       } Else {
 		;Remove comment all together
-		p_EMB_Core_BC_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
+		p_EMB_Lib_BlockComment_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
 	  }
     }
     
@@ -36,7 +34,7 @@ EMB_Core_BlockComment(mbsource){
 return mbsource
 }
 
-p_EMB_Core_BC_removeFromString(ByRef src,index,length){
+p_EMB_Lib_BlockComment_removeFromString(ByRef src,index,length){
   ;Supply function with an index and length of a string to extract
   ;The function will extract and return the string and remove it from the original src string.
   out_String := SubStr(src, index, length)
@@ -44,7 +42,7 @@ p_EMB_Core_BC_removeFromString(ByRef src,index,length){
   return out_String
 }
 
-p_EMB_Core_BC_insertIntoString(ByRef src,in_String,index){
+p_EMB_Lib_BlockComment_insertIntoString(ByRef src,in_String,index){
   ;inserts a string "in_String" into src before the index supplied.
   ;Mid(s,1,Index-1) & "---" & Mid(s,Index)
   src := SubStr(src,1,index-1) . in_String . SubStr(src,index)
