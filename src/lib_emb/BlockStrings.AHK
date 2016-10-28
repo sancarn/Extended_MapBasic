@@ -18,12 +18,10 @@ EMB_Lib_BlockStrings(mbsource){
 	If oMatch.Value(1) {
 		;replace captured block string with concatenated lines and mbCrLf comments
 		subSrc := p_EMB_Lib_BlockStrings_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
-		msgbox, %subSrc%
 			subSrc := RegExReplace(subSrc,"\(\""\s*","""")
 			subSrc := StrReplace(subSrc,"`r`n",""" & embCrLf &`r`n""")
 			subSrc := RegExReplace(subSrc,"\s*\""\)","""")
 		p_EMB_Lib_BlockStrings_insertIntoString(mbsource,subSrc,oMatch.Pos(0))
-		msgbox, %subSrc%
     }
 	
     ;Next i (Needed in the case where oMatch.Value(1) = "")
