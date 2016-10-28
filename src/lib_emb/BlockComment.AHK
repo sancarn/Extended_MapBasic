@@ -12,38 +12,26 @@ EMB_Core_BlockComment(mbsource){
   ;Loop over all i
   while i <> 0 {
     If oMatch.Value(1) {
-	  ;msgbox, % oMatch.Value(0) "-->" oMatch.Value(1) "-->" oMatch.Count
-	  
-      ;Add those that match 2nd criteria (real comments) to match object
-      pair := [oMatch.Pos(0), oMatch.Len(0)]
-      
-      ;Add pair array to collection of pairs - "Matches" represents all the matches that are not part of existing strings.
-      Matches.push(pair)
+      ;Remove match from 
+      If !EMB_Compact_Transpile {
+		;replace captured block comment with single line comments
+		subSrc := p_EMB_Core_BC_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
+			subSrc := RegExReplace(subSrc,"\/\*\s*","'")
+			subSrc := StrReplace(subSrc,"`r`n","`r`n'")
+			subSrc := RegExReplace(subSrc,"\s*\*\/","`r`n")
+		p_EMB_Core_BC_insertIntoString(mbsource,subSrc,oMatch.Pos(0))
+      } Else {
+		;Remove comment all together
+		p_EMB_Core_BC_removeFromString(mbsource,oMatch.Pos(0), oMatch.Len(0))
+	  }
     }
     
-    ;Next i
+    ;Next i (Needed in the case where oMatch.Value(1) = "")
     i := oMatch.Pos(0) + oMatch.Len(0)
 	
     ;Get next match from mbsource
     i := regexmatch(mbsource, "iO)" pattern, oMatch, i)
   }
-  
-  if (!EMB_Compact_Transpile) {
-    ;Loop over Matches
-	loop, % Matches.Length()
-    {
-	  LoopVar := Matches.Length() - A_Index + 1
-      subSrc := p_EMB_Core_BC_removeFromString(mbsource,Matches[LoopVar][1],Matches[LoopVar][2])
-		subSrc := RegExReplace(subSrc,"\/\*\s*","'")
-		subSrc := StrReplace(subSrc,"`r`n","`r`n'")
-		subSrc := RegExReplace(subSrc,"\s*\*\/","`r`n")
-      p_EMB_Core_BC_insertIntoString(mbsource,subSrc,matches[LoopVar][1])
-    }
-  } else {
-    LoopVar := Matches.Length() - A_Index + 1
-    p_EMB_Core_BC_removeFromString(mbsource,Matches[LoopVar][1],Matches[LoopVar][2])
-  }
-  
   
 return mbsource
 }
