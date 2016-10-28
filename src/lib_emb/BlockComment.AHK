@@ -38,7 +38,7 @@ p_EMB_Lib_BlockComment_removeFromString(ByRef src,index,length){
   ;Supply function with an index and length of a string to extract
   ;The function will extract and return the string and remove it from the original src string.
   out_String := SubStr(src, index, length)
-  src := SubStr(src,1,index - 1) . SubStr(src,index + length + 1)
+  src := SubStr(src,1,index - 1) . SubStr(src,index + length)
   return out_String
 }
 
