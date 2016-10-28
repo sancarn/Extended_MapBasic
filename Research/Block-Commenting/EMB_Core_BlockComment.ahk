@@ -60,7 +60,8 @@ EMB_Core_BlockComment(mbsource){
       p_EMB_Core_BC_insertIntoString(mbsource,subSrc,matches[LoopVar][1])
     }
   } else {
-    p_EMB_Core_BC_removeFromString(mbsource,matches[A_Index][0],matches[A_Index][1])
+    LoopVar := Matches.Length() - A_Index + 1
+    p_EMB_Core_BC_removeFromString(mbsource,Matches[LoopVar][1],Matches[LoopVar][2])
   }
   
   
