@@ -54,5 +54,4 @@ This project is still very much Work In Progress (as you can see from the planne
 * [ ] WinAPI Wrapper.
 * [ ] Dynamic functions (functions called from strings)
 * [ ] Support for custom functions to return custom types.
-* [ ] External MapBasic Window (this might end up being required. It'd be equivelent to an IDE)
 * [ ] Visual Ribbon Editor.
