@@ -27,6 +27,7 @@ This project is still very much Work In Progress (as you can see from the planne
 * [x] Block Commenting - Syntax: /* ... */
 * [x] Block Strings - Syntax: (" ... ")
 * [ ] Debug Mode <- If True, Debug.Print ... == Print ..., else Debug.Print ... == 'Print ...
+* [ ] Sub/Function Trace - Sub() ... Print "<ModuleName>:<subName/functionName>"
 * [ ] E_CurrentTable - Targetting the frontmost table, which is most useful in MBWindow.
 * [ ] E_FreeFile - Gets a file number that isn't open by another process.
 * [ ] Auto-Declare - No longer any need to declare subs and functions!
