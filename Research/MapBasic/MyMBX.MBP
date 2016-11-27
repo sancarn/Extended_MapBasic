@@ -1,0 +1,4 @@
+[Link]
+application=mymbx.mbx
+module=core.mbo
+module=main.mbo

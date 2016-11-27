@@ -1,0 +1,5 @@
+Include "Core.DEF"
+
+Sub Bob()
+	Note "Hello World"
+End Sub
