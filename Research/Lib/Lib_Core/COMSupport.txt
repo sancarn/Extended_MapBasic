@@ -1,0 +1,2 @@
+Implementation of COM for Pre-COM AHK
+https://github.com/ttnnkkrr/COM.AHK/releases/tag/1.0

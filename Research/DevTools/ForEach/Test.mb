@@ -1,0 +1,21 @@
+Declare sub main()
+Declare sub doctorWho(stuff as string)
+Declare function isCamping()
+
+sub main()
+  'This sub is amazing
+  print isCamping()
+end sub
+
+/*
+  Doctor who.
+  Our favourite scifi wizard
+*/
+sub doctorWho(stuff as string)
+  Print "Hello world"
+end sub
+
+function isCamping() as string
+  isCamping = ("Probably...
+  but hard to say")
+end function
