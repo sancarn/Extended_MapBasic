@@ -1,0 +1,15 @@
+Dim fs as string
+fs = "C:\Users\jwa\Desktop\TBD\MiWrite\hello.txt"
+
+Dim k as integer
+Open File fs For Binary as #1
+	k = asc("h")
+	Put #1,1, k
+	k = asc("e")
+	Put #1,2, k
+	k = asc("l")
+	Put #1,3, k
+	k = asc("l")
+	Put #1,4, k
+	k = asc("o")
+Close File #1
