@@ -39,7 +39,8 @@
 * [ ] Dynamic functions (functions called from strings)
 * [ ] Support for custom functions to return custom types.
 * [ ] Visual Ribbon Editor.
-[//]: <> (END TODO LIST)![Logo](/EMB_Head.png)
+[//]: <> (END TODO LIST)
+![Logo](/EMB_Head.png)
 
 This is an Open Source project. We are developing a powerful extension for Pitney Bowes' MapBasic Language. The Extended MapBasic Language can be passed through this transpiler to turn it into native MapBasic code. From here it will be compiled into executable MBX files or an executable .exe file.
 
