@@ -305,3 +305,37 @@ Bytes produced:
 6F 'o
 20 'DC0/DLE (Data Link Escape)
 ```
+
+## Put ALL characters
+
+Assuming that characters are the best way to go, to make sure we have to write all characters to a file and make sure they all are correct. In the end, MapInfo may write some characters down incorrectly to their true values.
+
+```
+Dim fs as string
+fs = "C:\Users\jwa\Desktop\TBD\MiWrite\hello.txt"
+
+Dim k as string*1
+Open File fs For Binary as #2
+	Dim i as integer
+	For i = 0 to 255
+		k = chr$(i)
+		Put #2,i+1, k
+	Next
+Close File #2
+```
+
+![CharacterExportImg](/MapInfo_CompleteCharacterExport.png)
+
+As we can see from the image it was a good thing we tested this since the first character we print `chr$(0)` isn't `00` as we'd expect, but instead it's `20`. This implies that when exporting files we will need an if statement like the following:
+
+```
+If hex = "00" Then
+	Dim k as SmallInt
+	k = 0
+	Put #1, k
+Else
+	Dim k as string*1
+	k=Hex2Chr$(hex)
+	Put #1, k
+End If
+```
