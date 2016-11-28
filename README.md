@@ -20,11 +20,7 @@ Feel free to post ideas for features as issues. If you want to make additions to
 
 This project is still very much Work In Progress (as you can see from the planned features list)
 
-[//]: <> (BEGIN TODO LIST)
-
-################################################################## 
-# asdf
-################################################################## 
+[//]: # (BEGIN TODO LIST)
 
 ## Planned Compiler Features:
 * [ ] Settings menu to manage features.
@@ -67,4 +63,4 @@ This project is still very much Work In Progress (as you can see from the planne
 * [ ] Support for custom functions to return custom types.
 * [ ] Visual Ribbon Editor.
 
-[//]: <> (END TODO LIST)
+[//]: # (END TODO LIST)
