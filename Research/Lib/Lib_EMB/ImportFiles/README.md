@@ -324,7 +324,7 @@ Open File fs For Binary as #2
 Close File #2
 ```
 
-![CharacterExportImg](/MapInfo_CompleteCharacterExport.png)
+![CharacterExportImg](MapInfo_CompleteCharacterExport.png)
 
 As we can see from the image it was a good thing we tested this since the first character we print `chr$(0)` isn't `00` as we'd expect, but instead it's `20`. This implies that when exporting files we will need an if statement like the following:
 
