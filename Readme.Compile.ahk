@@ -1,8 +1,8 @@
 ﻿FileRead, ToDoList, TODO.md
 FileRead, README, README.md
 
-Pattern := "[//]: <> (BEGIN TODO LIST)"
-EndPattern := "[//]: <> (END TODO LIST)"
+Pattern := "[//]: # (BEGIN TODO LIST)"
+EndPattern := "[//]: # (END TODO LIST)"
 
 Pos := InStr(README,Pattern) - 1
 StringLeft,Pt1,README,%Pos%
