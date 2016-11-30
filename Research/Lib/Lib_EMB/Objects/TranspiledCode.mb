@@ -1,0 +1,97 @@
+Type MyClass_Type
+  parentID as string
+  childrenIDs(1) as string
+  methods() as string
+  clsName as string
+  GUID as string
+
+  a as string
+  b as string
+  s as string
+  i as integer
+  j as integer
+  k as integer
+  x as float
+  y as float
+End Type
+
+Sub MyClass_SetXY(O as MyClass_Type,sx as float, sy as float)
+  O.x = sx
+  O.y = sy
+End sub
+
+Function MyClass_GetInfos(O as MyClass_Type)
+  MyClass_GetInfos = O.a & mbCrLf & O.b & mbCrLf & O.s
+  O.s = "Current XY : " & O.x & "," & O.y
+End Function
+
+Function MyClass_New() as MyClass_Type
+  Dim newClass as MyClass_Type
+
+  'Defaults
+  newClass.clsName = "MyClass"
+  newClass.Methods = "sSetXY,fGetInfos"
+
+  'Child-parents
+  newClass.parentID = ""
+  ReDim newClass.childrenIDs(0)
+
+  'get new GUID for class
+  newClass.GUID = NewGUID()
+
+  'Base script
+  newClass.a = NewGUID()
+  newClass.b = "s_SetXY,f_GetInfos"
+  newClass.s = "Current XY : " & x & "," & y
+
+  'Finally create a Global Object from it's GUID (somehow)
+  Call SetObject(O)
+End Function
+
+Sub testClass()
+  For i = 1 to 10
+    Dim O as MyClass
+    O = MyClass_New()
+
+    Dim GetInfos_Params(0) as Float
+    Call ExecuteMethod(O,"GetInfos", GetInfos_Params)
+
+    Dim SetXY_Params(2) as Float
+    SetXY_Params(1)=1
+    SetXY_Params(2)=2
+    Call ExecuteMethod(O,"SetXY", SetXY_Params)
+
+    Dim GetInfos_Params(0) as Float
+    Call ExecuteMethod(O,"GetInfos", GetInfos_Params)
+
+    'Finally create a Global Object from it's GUID (somehow)
+    Call SetObject(O)
+  Next
+End Sub
+
+SetObject_myClass(O as myClass)
+
+'SET OBJECT'
+'Better to use JSON to define a object.
+'Better still use tables!!
+
+'To define variables in global space use:
+Run Command "Global " & sVariableName & " as " & sVariableType
+
+'To set variables in global space use:
+Run Command "sVariableName=" & sValue
+
+'To get variables defined in global space use:
+Declare Method GetMBXGlobalVariable() Class "MapInfo.Types.IMapBasicApplication" Lib "MapInfo.Types, Version=12.5.0.0, Culture=neutral, PublicKeyToken=1c8d81d2ee78b75d" alias GetGlobalVariable (ByVal IMBXInstance as this, byval name as string) as this
+
+;Create all keys
+cmd = (
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\a" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\b" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\s" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\i" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\j" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\k" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\x" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\y" to ""
+)

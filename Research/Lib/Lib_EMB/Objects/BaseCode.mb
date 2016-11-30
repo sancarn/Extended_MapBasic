@@ -1,0 +1,30 @@
+'Typical use case of classes
+Class MyClass
+  'Property declarations
+  Dim a,b,s as string
+  Dim i,j,k as integer
+  Dim x,y as float
+
+  a = NewGUID()
+  b = "s_SetXY,f_GetInfos"
+  s = "Current XY : " & x & "," & y
+
+  Sub SetXY(sx as float, sy as float)
+    x = sx
+    y = sy
+    s = "Current XY : " & x & "," & y
+  End sub
+
+  Function GetInfos()
+    GetInfos = a & mbCrLf & b & mbCrLf & s
+  End Function
+End Class
+
+Sub testClass()
+  For i = 1 to 10
+    Dim O as New MyClass
+    O.GetInfos()
+    O.SetXY(1,2)
+    O.GetInfos()
+  Next
+End Sub
