@@ -1,0 +1,2 @@
+JSON Parser for VBA - To help conversion to MapBasic
+http://www.mrexcel.com/forum/excel-questions/795128-json-parser-via-visual-basic-applications.html
