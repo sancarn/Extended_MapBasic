@@ -44,8 +44,28 @@ Function MyClass_New() as MyClass_Type
   newClass.b = "s_SetXY,f_GetInfos"
   newClass.s = "Current XY : " & x & "," & y
 
+  'This routine should ONLY be called if the object is to be used later on.
   'Finally create a Global Object from it's GUID (somehow)
-  Call SetObject(O)
+  'Using metadata tables:
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\GUID" to newClass.GUID
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\a\value" to newClass.GUID
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\b\value" to newClass.b
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\s\value" to newClass.s
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\i\value" to newClass.i
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\j\value" to newClass.j
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\k\value" to newClass.k
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\x\value" to newClass.x
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\y\value" to newClass.y
+
+  'Declare types:
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\a\type" to "string"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\b\type" to "string"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\s\type" to "string"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\i\type" to "integer"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\j\type" to "integer"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\k\type" to "integer"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\x\type" to "float"
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\y\type" to "float"
 End Function
 
 Sub testClass()
@@ -86,12 +106,14 @@ Declare Method GetMBXGlobalVariable() Class "MapInfo.Types.IMapBasicApplication"
 
 ;Create all keys
 cmd = (
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\a" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\b" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\s" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\i" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\j" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\k" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\x" to ""
-  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\y" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\a" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\b" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\s" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\i" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\j" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\k" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\x" to ""
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\Properties\y" to ""
+
+
 )
