@@ -9,19 +9,29 @@
 * [x] Sub/Function Trace - Sub() ... Print "\<ModuleName\>:\<subName/functionName\>"
 * [x] Auto-Declare - No longer any need to declare subs and functions!
 * [ ] MapBasic Project and Modular programming support (with auto .mbp generation).
-* [ ] Ability to add enums for existent functions e.g. AddEnum("tableinfo(winid,ENUM as TAB_INFO)")
 * [ ] Implementation of Enums (For IDE - IntelliSence).
-* [ ] E_CurrentTable - Targetting the frontmost table, which is most useful in MBWindow.
-* [ ] E_FreeFile - Gets a file number that isn't open by another process.
-* [ ] Select from Query tables alongside existing tables: Select * from table1, query1 where...
-* [ ] Optional parameters for functions and sub-routines
-* [ ] Arrays as parameters for functions
-* [ ]   -- ByVal Arrays for functions and sub-routines.
+* [ ] Ability to add enums for existent functions e.g. AddEnum("tableinfo(winid,ENUM as TAB_INFO)")
 * [ ] PreTranspile: { ... } AHK Code blocks -Perform AHK Script before transpiling mapbasic document.
 * [ ] PreCompile: { ... } AHK Code blocks   -Perform AHK script before compiling mapbasic document.
 * [ ] PostCompile: { ... } AHK Code blocks  -Perform AHK script after compiling mapbasic document.
 * [ ] ".EMB" file format with auto-transpile.
 * [ ] Compile to .exe
+* [ ] Object orientation support for MapBasic.
+* [ ]   -- Classes in Classes in Classes...
+* [ ]   -- Overwriting and Extending existing Classes/Objects
+* [ ]   -- Reference objects (*'Run code x each time y is updated'*)
+* [ ]   -- MapInfo Application Objects
+* [ ]   -- Utils class
+* [ ]   -->> Utils.FF = E_FreeFile
+* [ ]   -->> Utils.CT = E_CurTable
+* [ ]   -->> Utils.CQ = E_CurQuery
+* [ ]   -->> Utils.T(\d+) = tableinfo(\1,1)
+* [ ] E_CurTable - Targetting the frontmost table, which is most useful in MBWindow.
+* [ ] E_FreeFile - Gets a number that isn't open by another process.
+* [ ] Select from Query tables alongside existing tables: Select * from table1, query1 where...
+* [ ] Optional parameters for functions and sub-routines
+* [ ] Arrays as parameters for functions
+* [ ]   -- ByVal Arrays for functions and sub-routines.
 
 ## Planned MBWindow support:
 * [x] Enter_Behaviour - Run selected line/selection or Run entire script
@@ -31,8 +41,6 @@
 
 ## Potential Features:
 * [ ] Importing external transpiling libraries for use in Extended MapBasic.
-* [ ] Object orientation support for MapBasic?
-* [ ] MapInfo object definition/intiialisation/updating.
 * [ ] COM Support.
 * [ ] WinAPI Wrapper.
 * [ ] Dynamic functions (functions called from strings)
