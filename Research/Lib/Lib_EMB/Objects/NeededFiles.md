@@ -60,3 +60,77 @@ Private Function Iff(Condition as Logical, sTrue as string, sFalse as string) as
     End If
 End Function
 ```
+
+# Class Declares
+
+```
+Type MyClass_Type
+  ThisParentID as string
+  ThisChildrenIDs(1) as string
+  ThisMethods(%NumMethods%) as string
+  ThisName as string
+  ThisGUID as string
+
+  property1 as type1
+  property2 as type2
+  ...
+End Type
+```
+
+```
+Function MyClass_New() as MyClass_Type
+  Dim O as MyClass_Type
+
+  'Initiate type from class constructor default values:
+  'O.property1 = ...
+  'O.property2 = ...
+  O.ThisParentID = 0
+  O.ThisChildrenIDs(1) = "..."
+  O.ThisChildrenIDs(2) = "..."
+  '...
+  O.ThisMethods(1) = "..."
+  O.ThisMethods(2) = "..."
+  '...
+  O.ThisName = "MyClass"
+  O.ThisGUID = New_GUID()
+
+  Call MyClass_setValues(O)
+  MyClass_New = O
+End Function
+```
+
+```
+Sub MyClass_setValues(O as MyClass_Type)
+  'Counter variable if required
+  Dim i as integer
+
+  'This routine should ONLY be called if the object is to be used later on.
+  'Finally create a Global Object from it's GUID (somehow)
+  'Using metadata tables:
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\GUID" to O.ThisGUID
+
+  'User properties !!! REMEMBER SPECIAL CASE FOR ARRAYS !!!
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property1\value" to O.property1
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property1\type" to "type1"
+
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property2\value" to O.property2
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property2\type" to "type2"
+  '...
+
+  'User property arrays: (assuming MyClass_Type.Property_Arr)
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\Property_Arr\length\value" to UBound(O.Property_Arr)
+  Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\Property_Arr\type" to "..."
+  For i = 1 to UBound(O.Property_Arr)
+    Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\Property_Arr\" & i & "\value" to O.PropertyArr(i)
+  Next
+  '...
+End Sub
+```
+
+# General Object Declarations
+
+```
+Sub Release_Object(O as MyClass_Type)
+  Metadata Table %EMB_MBXName%_AppObjects DroHpKey "\AppObjects\" & O.ThisName & "\" & O.ThisGUID Hierarchical
+End Sub
+```
