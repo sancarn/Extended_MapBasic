@@ -68,9 +68,13 @@ Function MyClass_New() as MyClass_Type
   Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & newClass.GUID & "\Properties\y\type" to "float"
 End Function
 
+<<<<<<< Updated upstream
 Function NewGUID()
     
 End Function
+=======
+
+>>>>>>> Stashed changes
 
 Sub testClass()
   For i = 1 to 10

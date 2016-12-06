@@ -23,8 +23,8 @@ End Class
 Sub testClass()
   For i = 1 to 10
     Dim O as New MyClass
-    O.GetInfos()
+    Print O.GetInfos()
     O.SetXY(1,2)
-    O.GetInfos()
+    Print O.GetInfos()
   Next
 End Sub
