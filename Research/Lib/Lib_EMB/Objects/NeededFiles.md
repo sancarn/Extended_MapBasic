@@ -115,6 +115,7 @@ Sub MyClass_setValues(O as MyClass_Type)
 
   Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property2\value" to O.property2
   Metadata Table %EMB_MBXName%_AppObjects SetKey "\AppObjects\MyClass\" & O.ThisGUID & "\Properties\property2\type" to "type2"
+
   '...
 
   'User property arrays: (assuming MyClass_Type.Property_Arr)
@@ -130,7 +131,36 @@ End Sub
 # General Object Declarations
 
 ```
-Sub Release_Object(O as MyClass_Type)
-  Metadata Table %EMB_MBXName%_AppObjects DroHpKey "\AppObjects\" & O.ThisName & "\" & O.ThisGUID Hierarchical
+Sub Release_Object(sGUID as string, sClassName as string)
+  Metadata Table %EMB_MBXName%_AppObjects DroHpKey "\AppObjects\" & sClassName & "\" & sGUID & " Hierarchical"
 End Sub
 ```
+
+# Compilation:
+
+`Dim O as New MyClass`
+
+Compiles to:
+
+```
+Dim O as MyClass_Type
+O = MyClass_New()
+```
+
+----
+
+`O.Method(params*)`
+
+Compiles to:
+
+```
+MyClass_Method(O,params*)
+```
+
+----
+
+`Release O`
+
+Compiles to:
+
+`Call Release_Object(O.ThisGUID,O.ThisName)`

@@ -1,0 +1,51 @@
+Class Collection
+  Dim pItems(1) as string
+
+  Sub Add(ItemGUID as string, key as string, ItemClassName as string, VarType as string)
+
+  End Sub
+
+  Sub Remove(index as integer)
+
+  End Sub
+
+  Sub Remove_Key(key as string)
+
+  End Sub
+
+  #{
+    REGEX: "(\w+)\s*=\s*(%THIS%\.Item\(\d+\))"
+
+    ;Replaces O = c.Item(1) with O = MyClass_ThisGet(c.pItem(1))
+    ;Returns object regarding O
+    O := BackTrack_ClassGet(\1)
+    To_STDOUT( \1 . " = " . O.Getter . "(" . \2 . ")")
+  }
+End Class
+
+'**************************************************************************
+
+This shows the importance of defining a Getter for all classes.
+Otherwise c.Item() would not be evaluate-able unless Collection contained 1 function for each possible variable type.
+
+The #{} section is executable AHK code. Without a "Variant" datatype I saw no other reasonable way to accomplish the same job.
+
+Alternatives that I deem unreasonable include:
+
+'**************************************************************************
+Function ItemInt() as Integer
+
+End Function
+
+Function ItemStr() as String
+
+End Function
+
+Function ItemSmallInt() as Integer
+
+End Function
+
+'...
+
+c.Item(1) --> c.Item
+'**************************************************************************
