@@ -1,5 +1,5 @@
 Class Collection
-  Dim pItems(1) as string
+  Dim pItem(1) as string
 
   Sub Add(ItemGUID as string, key as string, ItemClassName as string, VarType as string)
 
@@ -21,6 +21,19 @@ Class Collection
     O := BackTrack_ClassGet(\1)
     To_STDOUT( \1 . " = " . O.Getter . "(" . \2 . ")")
   }
+
+  'Above code in MB code:
+  'Dim obj as MyClass_Type
+  'obj = col.item(1)
+  Behavior Item(index as integer)
+      'Definitions:
+      'This : The behavior
+      ' --> This.Caller : The caller of the behavior
+      'This.Parent : the Collection class
+
+      this.Caller = This.ThisGet(This.pItem)
+      Load this
+  End Behavior
 End Class
 
 '**************************************************************************
@@ -29,6 +42,15 @@ This shows the importance of defining a Getter for all classes.
 Otherwise c.Item() would not be evaluate-able unless Collection contained 1 function for each possible variable type.
 
 The #{} section is executable AHK code. Without a "Variant" datatype I saw no other reasonable way to accomplish the same job.
+
+The system needs to be dynamic because any 1 collection can contain multiple different types of object.
+
+IF OBJECT:
+syntax                         type of obj to return      GUID
+col.item(1)     EvalMBXFunct("%TYPE%_ThisGet("       & col.pItem(1) & ")")
+
+ELSE CAST TO VARTYPE:
+
 
 Alternatives that I deem unreasonable include:
 
@@ -49,3 +71,59 @@ End Function
 
 c.Item(1) --> c.Item
 '**************************************************************************
+
+Let's briefly go through the compile process of:
+
+
+```
+Dim obj1 as New MyClass
+Dim obj2 as New UrClass
+Dim col as New Collection
+col.Add obj1
+col.Add obj2
+
+Dim test as MyClass
+test = col.Item(1)
+```
+
+## 1. `Dim obj1 as New MyClass`
+
+Compiler sees obj1 is being defined as a new "MyClass". New immediately implies object.
+obj1 placed in variable array, defined as an object with methods and properties defined by
+MyClass and Type MyClass_Type.
+
+## 2. `Dim obj2 as New UrClass`
+
+Compiler sees obj2 is being defined as a new "UrClass". New immediately implies object.
+obj2 placed in variable array, defined as an object with methods and properties defined by
+UrClass and Type UrClass_Type.
+
+## 3. `Dim col as New Collection`
+
+Compiler sees col is being defined as a new "Collection". New immediately implies object.
+col placed in variable array, defined as an object with methods and properties defined by
+collection and Type Collection_Type.
+
+## 4. col.Add obj1
+
+VariableA."...". Either type or object call. VariableA is col, col is an object.
+"..." searched in col (is it a property or a method?). Found to be method. Called as such:
+Call col_add(obj1)
+
+## 5. col.Add obj2
+
+VariableA."...". Either type or object call. VariableA is col, col is an object.
+"..." searched in col (is it a property or a method?). Found to be method. Called as such:
+Call col_add(obj2)
+
+## 6. `Dim test as MyClass`
+
+Compiler sees test is being defined as a "MyClass". "MyClass is either a type or an object". Found to be object
+compiled to: `Dim test as MyClass_Type`. Test is placed in a variable array, defined as an object with methods
+and properties defined by MyClass and Type MyClass_Type
+
+## 7. `test = col.Item(1)`
+
+Test with object type MyClass = {Expected MyClass}
+col.Item(1). Item is behavior. Behaviours get AHK object for return variable and can perform operations on them.
+e.g. `Test.Type = "MyClass"`  
