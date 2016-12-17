@@ -2,11 +2,13 @@ Class Collection
   Dim pItem(1) as string
 
   Sub Add(ItemGUID as string, key as string, ItemClassName as string, VarType as string)
-
+    'Once again Add has the problem that it can't take the object type as a parameter, without compilation, dynamically add objects
+    'With compiling we can change the parameters of the collection.add() call.
+    'Thus the add function requires compilation assistance
   End Sub
 
   Sub Remove(index as integer)
-
+    'A single remove function which can deal with keys or indexes is impossible without compiling.
   End Sub
 
   Sub Remove_Key(key as string)
@@ -26,13 +28,7 @@ Class Collection
   'Dim obj as MyClass_Type
   'obj = col.item(1)
   Behavior Item(index as integer)
-      'Definitions:
-      'This : The behavior
-      ' --> This.Caller : The caller of the behavior
-      'This.Parent : the Collection class
-
-      this.Caller = This.ThisGet(This.pItem)
-      Load this
+      This.Caller.Code = This.Caller.Properties[0].Name "=" This.Caller.Properties[0].Getter "(" This.Caller.Properties[1].Parent ".pItem(" This.Caller.Properties[1].Params ")" ")"
   End Behavior
 End Class
 
@@ -125,5 +121,27 @@ and properties defined by MyClass and Type MyClass_Type
 ## 7. `test = col.Item(1)`
 
 Test with object type MyClass = {Expected MyClass}
-col.Item(1). Item is behavior. Behaviours get AHK object for return variable and can perform operations on them.
-e.g. `Test.Type = "MyClass"`  
+col.Item(1). Item is behavior. Behaviors contain compiler commands themselves. Behavior's have direct access to their callers.
+This.Caller is an object containing a reference to the code which called the behavior `This.Caller.Code` and all variable objects
+of that line of code `This.Caller.Properties`
+
+This = The Behavior
+This.Caller = The caller of the behavior
+This.Caller.Properties[0] == {test}
+This.Caller.Properties[1] == {col.Item(1)}
+This.Caller.Properties[0].Name = "test"
+This.Caller.Properties[0].Type = "MyClass"
+This.Caller.Properties[0].Getter = "MyClass_ThisGet"
+
+Behavior:
+This.Caller.Code = This.Caller.Properties[0].Name "=" This.Caller.Properties[0].Getter "(" This.Caller.Properties[1].Parent ".pItem(" This.Caller.Properties[1].Params ")" ")"
+
+
+Regex Replace: \b(.*)\b with %\1%
+
+Rather this should have no MapBasic representation because it is not something that can be done dynamically. This should probably be compiling module specific.
+
+THE ULTIMATE PROBLEM IS:
+
+Since we can't dynamically type variables, we can't create a general collection.get function that works for all variables without compilation assistance.
+--> IT IS GOING TO BE BETTER TO DEAL WITH THESE IN THE COLLECTION MODULE UNTIL COMPILING BECOMES TOKEN BASED

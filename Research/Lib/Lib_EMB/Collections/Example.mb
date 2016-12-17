@@ -1,0 +1,109 @@
+'Typical use case of classes
+Class MyClass
+  'Property declarations
+  Dim a,b,s as string
+  Dim i,j,k as integer
+  Dim x,y as float
+
+  a = NewGUID()
+  b = "s_SetXY,f_GetInfos"
+  s = "Current XY : " & x & "," & y
+
+  Sub SetXY(sx as float, sy as float)
+    x = sx
+    y = sy
+    s = "Current XY : " & x & "," & y
+  End sub
+
+  Function GetInfos()
+    GetInfos = a & mbCrLf & b & mbCrLf & s
+  End Function
+End Class
+
+Sub testClass()
+  For i = 1 to 10
+    Dim O as New MyClass
+    O.GetInfos()
+    O.SetXY(1,2)
+    O.GetInfos()
+  Next
+End Sub
+
+'-----------------------------------------'
+'------------ Transpiles to --------------'
+'-----------------------------------------'
+
+Type MyClass_Type
+  parentID as string
+  childrenIDs(1) as string
+  methods() as string
+  clsName as string
+  GUID as string
+
+  a as string
+  b as string
+  s as string
+  i as integer
+  j as integer
+  k as integer
+  x as float
+  y as float
+End Type
+
+Sub MyClass_SetXY(O as MyClass_Type,sx as float, sy as float)
+  O.x = sx
+  O.y = sy
+End sub
+
+Function MyClass_GetInfos(O as MyClass_Type)
+  MyClass_GetInfos = O.a & mbCrLf & O.b & mbCrLf & O.s
+  O.s = "Current XY : " & O.x & "," & O.y
+End Function
+
+Function MyClass_New() as MyClass_Type
+  Dim newClass as MyClass_Type
+
+  'Defaults
+  newClass.clsName = "MyClass"
+  newClass.Methods = "sSetXY,fGetInfos"
+
+  'Child-parents
+  newClass.parentID = ""
+  ReDim newClass.childrenIDs(0)
+
+  'get new GUID for class
+  newClass.GUID = NewGUID()
+
+  'Base script
+  newClass.a = NewGUID()
+  newClass.b = "s_SetXY,f_GetInfos"
+  newClass.s = "Current XY : " & x & "," & y
+
+  MyClass_New = newClass
+End Function
+
+Sub testClass()
+  For i = 1 to 10
+    Dim O as MyClass
+    O = MyClass_New()
+    
+    Call MyClass_GetInfos(O)
+    Call MyCLass_SetXY(O,1,2)
+    Call MyClass_GetInfos(O)
+  Next
+End Sub
+
+
+'SET OBJECT
+'Better to use JSON to define a object.
+'Better still use tables!!
+'Going to use metadata for now...
+
+'To define variables in global space use:
+Run Command "Global " & sVariableName & " as " & sVariableType
+
+'To set variables in global space use:
+Run Command "sVariableName=" & sValue
+
+'To get variables defined in globla space use:
+Declare Method GetMBXGlobalVariable() Class "MapInfo.Types.IMapBasicApplication" Lib "MapInfo.Types, Version=12.5.0.0, Culture=neutral, PublicKeyToken=1c8d81d2ee78b75d" alias GetGlobalVariable (ByVal IMBXInstance as this, byval name as string) as this
