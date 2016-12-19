@@ -37,13 +37,29 @@ Redefine as own Function with name:
 
 Add the New() Method so classes can be created.
 
+```
+Sub %ThisCLass%_New()
+```
+
 ### ThisGet() Method
 
 Add the ThisGet() method so created objects can be distributed by distributing their GUID.
 
+Implementation:
+
+```
+Function %ThisClass%_ThisGet(sGUID as string, sName as String) as %ThisType%
+
+  %ThisClass%_ThisGet.Property1 = GetMetadata$(%EMB_MBXName%_AppObjects , "\AppObjects\" & sName & "\" & sGUID & "\Properties\" & Property1 & "\value")
+  %ThisClass%_ThisGet.Property2 = GetMetadata$(%EMB_MBXName%_AppObjects , "\AppObjects\" & sName & "\" & sGUID & "\Properties\" & Property2 & "\value")
+  '...
+
+End Function
+```
+
 ### Type addition.
 
-Create a type definition or the class
+Create a type definition for the class
 
 
 ```
@@ -54,7 +70,7 @@ Type MyClass_Type
   clsName as string
   GUID as string
 
-  <standard property types>
+  <properties>
 End Type
 ```
 
