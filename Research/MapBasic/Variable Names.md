@@ -57,11 +57,15 @@ All starting characters
 This leads to this regex:
 The RegEx to find these characters can be given by:
 
-`(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x0C\x09])`
+```
+(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x0C\x09])
+```
 
 Alternative *compressed* RegEx:
 
-`[0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]`
+```
+[0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]
+```
 
 ## Finding possible "full" variable names
 
@@ -73,7 +77,9 @@ Any MapBasic variable written under Windows-Latin character set (ASCII) will be 
 
 Alternative Compressed RegEx:
 
-`[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*`
+```
+[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*
+```
 
 ## Limitations:
 
@@ -117,7 +123,9 @@ Ideally our RegEx would disallow these, I haven't worked out how, but this shoul
 
 If possible pick up variables when they are defined using RegEx like:
 
-`Dim\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)\s+as\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)`
+```
+Dim\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)\s+as\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)
+```
 
 > NOTE: This assumes variable types can contain exactly the same characters as variable names!
 
