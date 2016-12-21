@@ -112,3 +112,15 @@ Ideally our RegEx would disallow these, I haven't worked out how, but this shoul
 ```
 (?!Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While|UnDim)
 ```
+
+## Picking up on variables on definition
+
+If possible pick up variables when they are defined using RegEx like:
+
+`Dim\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)\s+as\s+string`
+
+Then
+
+```
+if \1 ~= "Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While|UnDim" then CatchError
+```
