@@ -63,7 +63,7 @@ Alternative *compressed* RegEx:
 
 `[0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]`
 
-## Finding "full" variable names
+## Finding possible "full" variable names
 
 Any MapBasic variable written under Windows-Latin character set (ASCII) will be targetable with the following RegEx:
 
@@ -74,3 +74,41 @@ Any MapBasic variable written under Windows-Latin character set (ASCII) will be 
 Alternative Compressed RegEx:
 
 `[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*`
+
+## Limitations:
+
+As specified in the MapBasic reference:
+
+> Many MapBasic language keywords, such as Open, Close, Set, and Do, are reserved words which may
+not be used as variable names. If you attempt to define a variable called Set, MapBasic will generate
+an error when you compile the program.
+
+These variable names can be found in the list below:
+
+```
+Add,Alter,Browse
+Call,Close,Create,DDE
+DDEExecute,DDEPoke,DDETerminate,DDETerminateAll
+Declare,Delete,Dialog,Dim
+Do,Drop,Else,ElseIf
+End,Error,Event,Exit
+Export,Fetch,Find,For
+Function,Get,Global,Goto
+Graph,If,Import,Insert
+Layout,Map,Menu,Note
+Objects,OnError,Open,Pack
+Print,PrintWin,ProgressBar,Put
+ReDim,Register,Reload,Remove
+Rename,Resume,Rollback,Run
+Save,Seek,Select,Set
+Shade,StatusBar,Stop,Sub
+Type,Update,While
+```
+
+This list should also includes `UnDim`
+
+Ideally our RegEx would disallow these, I haven't worked out how, but this should help:
+
+```
+(?!Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While)
+```
