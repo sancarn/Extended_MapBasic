@@ -45,7 +45,6 @@ You may notice that these largely include the characters at the start, but with 
 
 ```
 ASCII(9)
-ASCII(20)
 !
 #
 $
@@ -58,7 +57,7 @@ All starting characters
 This leads to this regex:
 The RegEx to find these characters can be given by:
 
-`(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x20\x0C\x09])`
+`(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x0C\x09])`
 
 Alternative *compressed* RegEx:
 
@@ -69,9 +68,9 @@ Alternative *compressed* RegEx:
 Any MapBasic variable written under Windows-Latin character set (ASCII) will be targetable with the following RegEx:
 
 ```
-[a-zA-Z_~\x80-\xFF](?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x20\x0C\x09])*
+[a-zA-Z_~\x80-\xFF](?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x0C\x09])*
 ```
 
 Alternative Compressed RegEx:
 
-`[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]*`
+`[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*`
