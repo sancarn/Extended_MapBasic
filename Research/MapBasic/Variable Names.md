@@ -56,8 +56,13 @@ All starting characters
 ```
 
 This leads to this regex:
-The RegEx to find these characters can be given by: `(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x20\x0C\x09])`
-Alternative *compressed* RegEx: `[0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]`
+The RegEx to find these characters can be given by:
+
+`(?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x20\x0C\x09])`
+
+Alternative *compressed* RegEx:
+
+`[0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]`
 
 ## Finding "full" variable names
 
@@ -67,4 +72,6 @@ Any MapBasic variable written under Windows-Latin character set (ASCII) will be 
 [a-zA-Z_~\x80-\xFF](?:[a-zA-Z_~\x80-\xFF]|[0-9@&%$#!\x20\x0C\x09])*
 ```
 
-Alternative Compressed RegEx: `[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]*`
+Alternative Compressed RegEx:
+
+`[a-zA-Z_~\x80-\xFF][0-9@&%$#!\x20\x0C\x09a-zA-Z_~\x80-\xFF]*`
