@@ -110,5 +110,5 @@ This list should also includes `UnDim`
 Ideally our RegEx would disallow these, I haven't worked out how, but this should help:
 
 ```
-(?!Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While)
+(?!Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While|UnDim)
 ```
