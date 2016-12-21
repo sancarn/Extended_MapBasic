@@ -117,7 +117,9 @@ Ideally our RegEx would disallow these, I haven't worked out how, but this shoul
 
 If possible pick up variables when they are defined using RegEx like:
 
-`Dim\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)\s+as\s+string`
+`Dim\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)\s+as\s+([a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*)`
+
+> NOTE: This assumes variable types can contain exactly the same characters as variable names!
 
 Then
 
