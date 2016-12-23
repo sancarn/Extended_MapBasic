@@ -32,6 +32,7 @@
 * [ ] Optional parameters for functions and sub-routines
 * [ ] Arrays as parameters for functions
 * [ ]   -- ByVal Arrays for functions and sub-routines.
+* [ ] Update TABLE set COLUMN = VALUE where COLUMN = VALUE Implementation. (Currently only works for "where rowid = ...")
 
 
 ## Planned MBWindow support:
@@ -39,7 +40,7 @@
 * [x] Better detection of MapBasic Window being active. (MapInfo makes it hard to do this, but should be possible)
 * [x] Ability to use multiple compilation methods at once? -- This seemed pointless since the RegEx method worked so well. Now we souly use that method to compile from the MBWindow.
 * [ ] Custom MapBasic Window built in HTML with ACE including custom syntax highlighting, code snippits importing, code running...
-* [ ] ~ Iff(bool, cmd_true, cmd_false) command 
+* [ ] ~ Iff(bool, cmd_true, cmd_false) command
 
 
 ## Potential Features:
