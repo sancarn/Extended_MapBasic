@@ -36,6 +36,8 @@ Transpiler_insertIntoString(ByRef src,in_String,index){
 
 Class utils
 {
+  Tokens := []
+
   iqt(byref pattern)
   {
     ;iqt a.k.a. Ignore Quoted Text is a simple utility for ignoring some pattern contained in a written string.
@@ -56,18 +58,40 @@ Class utils
   }
   insertMBOperators(byref s, toReplace){
       mboperators := "(?:\+|\*|-|=|\/|\\|\^|&|<>|<|<=|>|>=|AND|OR|NOT|MOD|CONTAINS|CONTAINS\s+PART|CONTAINS\s+ENTIRE|WITHIN|PARTLY\s+WITHIN|ENTIRELY\s+WITHIN|INTERSECTS)"
-      s = strreplace(s,toReplace,mboperators)
+      s = StrReplace(s,toReplace,mboperators)
       return s
   }
   insertDeclarationArgs(byref s, toReplace){
-    mbDeclareArgs = (?:\s*\w+\s+as\s+\w+\s*){0,1}(?:,\s*\w+\s+as\s+\w+\s*)*
-    s = strreplace(s,toReplace,mbDeclareArgs)
+    mbDeclareArgs = (?:\s*VARIABLE\s+as\s+VARIABLE\s*){0,1}(?:,\s*VARIABLE\s+as\s+VARIABLE\s*)*
+    s = insertVariable(s,"VARIABLE")
+    s = StrReplace(s,toReplace,mbDeclareArgs)
     return s
   }
+  insertVariable(byref s, toReplace){
+    variable = [a-zA-Z_~\x80-\xFF][0-9@&%$#!\x0C\x09a-zA-Z_~\x80-\xFF]*
+    s = StrReplace(s,toReplace,variable)
+    return s
+  }
+  spaceToWhitespace(byref s, replacement="\s+"){
+      ;Converts all spaces to regex whitespace:
+      s = StrReplace(s," ", replacement)
+  }
+
   AppendDef(mbdef){
 
   }
   WriteDef(){
     FileAppend, %mbdef%, %A_WorkingDir%\ExtendedMapBasic.DEF
+  }
+
+  Tokenise(mbsource){
+      ;Get all variable declarations
+      constant_declaration_pattern = Define VARIABLE CONSTANT_EXPRESSION
+      variable_declaration_pattern = Dim VARIABLE(\(.*\)){0,1} As VARIABLE
+      global_declaration_pattern = Global VARIABLE(\(.*\)){0,1} As VARIABLE
+
+      method_declaration_pattern = (?:Sub|Function) VARIABLE\((DECLARATION_ARGS)\)( as VARIABLE){0,1}
+      method_pattern = VARIABLE((?:VARIABLE){0,1}(?:,(?:VARIABLE{0,1})*)
+
   }
 }
