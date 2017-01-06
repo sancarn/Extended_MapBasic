@@ -134,3 +134,9 @@ Then
 ```
 if \1 ~= "Add|Alter|Browse|Call|Close|Create|DDE|DDEExecute|DDEPoke|DDETerminate|DDETerminateAll|Declare|Delete|Dialog|Dim|Do|Drop|Else|ElseIf|End|Error|Event|Exit|Export|Fetch|Find|For|Function|Get|Global|Goto|Graph|If|Import|Insert|Layout|Map|Menu|Note|Objects|OnError|Open|Pack|Print|PrintWin|ProgressBar|Put|ReDim|Register|Reload|Remove|Rename|Resume|Rollback|Run|Save|Seek|Select|Set|Shade|StatusBar|Stop|Sub|Type|Update|While|UnDim" then CatchError
 ```
+
+# EDIT - 06 Jan 2017
+
+I've discovered that variables cannot contain "@" in the middle of a varaible name, but instead, only at the end of a variable name. This will improve the RegEx accuracy.
+
+
